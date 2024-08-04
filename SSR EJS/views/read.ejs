@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/styles.css" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="w-full h-full bg-zinc-900">
+    <main class="p-10 text-white">
+      <a href="/" class="text-blue-500 hover:underline underline-offset-4">back to home</a>
+      <h1 class="text-3xl mt-5">All Users</h1>
+      <hr class="mt-2 mb-4 bg-zinc-600 h-px" />
+      <% if (users.length > 0) { %>
+        <section class="users flex gap-10 flex-wrap">
+          <% users.forEach((user)=> { %>
+            <div class="user w-72 p-4 bg-zinc-800 rounded-lg">
+              <figure class="w-full h-72 bg-red-500 rounded-md">
+                <img class="h-full w-full object-cover" src="<%= user.imageUrl %>" alt="<%= user.name %>">
+              </figure>
+              <h3 class="text-xl mt-3">
+                <%= user.name %>
+              </h3>
+              <h5 class="text-zinc-500">
+                <%= user.email %>
+              </h5>
+              <div class="flex gap-3 mt-10">
+                <a href="/edit/<%= user._id %>" class="text-blue-500 hover:underline underline-offset-4">
+                  Edit User
+                </a>
+                <a href="/delete/<%= user._id %>" class="text-red-500 hover:underline underline-offset-4"> Delete User </a>
+              </div>
+            </div>
+            <% }) %>
+          </section>
+      <% } else { %>
+        <h3 class="text-3xl text-red-600 font-bold">No user found.</h3>
+      <% } %>
+    </main>
+  </body>
+</html>
