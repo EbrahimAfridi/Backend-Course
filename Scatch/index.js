@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const app = express();
 const db = require("./config/mongoose-connection");
+const ownersRouter = require("./routes/ownersRouter");
 const port = 3000;
 
 // Middlewares
@@ -14,8 +15,8 @@ app.set("view engine", "ejs");
 
 // Routes + Controllers
 app.use("/owners", ownersRouter);
-app.use("/users", usersRouter);
-app.use("/products", productsRouter);
+// app.use("/users", usersRouter);
+// app.use("/products", productsRouter);
 
 // Routes
 app.get("/", (req, res) => {
