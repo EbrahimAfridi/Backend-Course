@@ -9,6 +9,9 @@ const usersRouter = require("./routes/usersRouter");
 const productsRouter = require("./routes/productsRouter");
 const port = 3000;
 
+// DOTENV Config
+require("dotenv").config();
+
 // Middlewares
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
@@ -19,7 +22,7 @@ app.set("view engine", "ejs");
 // Routes + Controllers
 app.use("/", indexRouter);
 app.use("/owners", ownersRouter);
-app.use("/users", usersRouter);
+app.use("/users", usersRouter); // means =>  /users/[ ANY FOLLOWING ROUTES ]
 app.use("/products", productsRouter);
 
 // Routes
