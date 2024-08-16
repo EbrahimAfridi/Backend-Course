@@ -1,6 +1,6 @@
 const express = require("express");
+const isLoggedIn = require("../middleware/isLoggedIn");
 const router = express.Router();
-const isLoggedIn = require("../middlewares/isLoggedIn");
 
 router.get("/", (req, res) => {
   let error = req.flash("error");
