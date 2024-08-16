@@ -52,3 +52,8 @@ module.exports.logInUser = async (req, res) => {
     res.send("You are logged in.");
   });
 };
+
+module.exports.logOutUser = (req, res) => {
+  res.cookie("token", "");
+  res.redirect("/");
+};
